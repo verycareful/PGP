@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sentence Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="background-glow"></div>
+  <main class="app-shell">
+    <section class="hero">
+      <p class="eyebrow">Pregroup Grammar Playground</p>
+      <h1>Sentence Lab</h1>
+      <p class="subtitle">Parse everyday sentences with support for adverbs, prepositional phrases, and compound clauses using and/or.</p>
+    </section>
+
+    <section class="card input-card">
+      <label for="sentenceInput">Enter sentence</label>
+      <div class="input-row">
+        <input id="sentenceInput" type="text" placeholder="the smart student quickly reads a book in park and bob runs" />
+        <button id="parseBtn" type="button">Parse</button>
+      </div>
+      <p class="hint">You can edit the lexicon in lexicon.json without touching Python code.</p>
+    </section>
+
+    <section class="card output-card">
+      <h2>Result</h2>
+      <div id="status" class="status neutral">Waiting for input.</div>
+      <div class="result-grid">
+        <div>
+          <h3>Tokens</h3>
+          <pre id="tokens">[]</pre>
+        </div>
+        <div>
+          <h3>Normalized</h3>
+          <pre id="normalized">-</pre>
+        </div>
+        <div>
+          <h3>Original Diagram</h3>
+          <pre id="originalDiagram">-</pre>
+          <div class="diagram-box">
+            <img id="originalDiagramImage" alt="Original diagram visualization" />
+          </div>
+        </div>
+        <div>
+          <h3>Reduced Diagram</h3>
+          <pre id="reducedDiagram">-</pre>
+          <div class="diagram-box">
+            <img id="reducedDiagramImage" alt="Reduced diagram visualization" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

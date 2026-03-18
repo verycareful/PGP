@@ -1,0 +1,4 @@
+lambeq==0.3.0
+discopy
+matplotlib
+Flask
