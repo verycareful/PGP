@@ -1,8 +1,5 @@
-﻿# PGP Sentence Lab
-[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
-[![Flask](https://img.shields.io/badge/Flask-3.0+-000000?style=flat-square&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
-[![License: Polyform NC](https://img.shields.io/badge/License-Polyform%20NC%201.0.0-blue.svg)](https://polyformproject.org/licenses/noncommercial/1.0.0/)
-[![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square)](.)
+# PGP Sentence Lab
+
 Version: 1903.26-alpha
 
 PGP Sentence Lab is a pregroup-grammar sentence parser built with Python and Flask.
@@ -126,17 +123,3 @@ All words are normalized to lowercase when loaded.
 - This parser is intentionally constrained to supported grammar patterns.
 - Unknown words fall back to nouns unless heuristic rules apply.
 - Diagram generation requires plotting dependencies from `requirements.txt`.
-
-## License
-
-Copyright © 2026 Sricharan Suresh (github.com/verycareful)
-
-This project is licensed under the **[Polyform Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0/)**.
-You may use, copy, and modify this software for non-commercial purposes only.
-Commercial use of any kind is prohibited without explicit written permission from the author.
-
-See the [LICENSE](LICENSE) file for the full license text, or visit
-[https://polyformproject.org/licenses/noncommercial/1.0.0/](https://polyformproject.org/licenses/noncommercial/1.0.0/).
-
-For commercial licensing inquiries, contact [sricharanc03@gmail.com](mailto:sricharanc03@gmail.com).
-
