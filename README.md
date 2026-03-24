@@ -4,7 +4,7 @@
 [![License: Polyform NC](https://img.shields.io/badge/License-Polyform%20NC%201.0.0-blue.svg)](https://polyformproject.org/licenses/noncommercial/1.0.0/)
 [![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen?style=flat-square)](.)
 
-Version: 1903.26-alpha
+Version: 2403.26-alpha
 
 PGP Sentence Lab is a pregroup-grammar sentence parser built with Python and Flask.
 It accepts user input, parses supported sentence structures, and returns both textual and visual (PNG) diagrams for original and reduced forms.
@@ -19,6 +19,7 @@ It accepts user input, parses supported sentence structures, and returns both te
   - compound clauses with `and` and `or`
 - Editable JSON lexicon (`lexicon.json`) for vocabulary updates without code changes
 - Diagram rendering as text and image output
+- Click-to-expand image modal for diagram visualization
 
 ## Project Structure
 
@@ -69,7 +70,7 @@ python sentence_generation.py --version
 
 Expected:
 
-- `sentence-lab 1903.26-alpha`
+- `sentence-lab 2403.26-alpha`
 
 ## API
 

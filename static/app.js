@@ -7,6 +7,9 @@ const originalEl = document.getElementById('originalDiagram');
 const reducedEl = document.getElementById('reducedDiagram');
 const originalImageEl = document.getElementById('originalDiagramImage');
 const reducedImageEl = document.getElementById('reducedDiagramImage');
+const imageModal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
+const closeModal = document.querySelector('.close-modal');
 
 function setStatus(message, kind) {
   statusEl.textContent = message;
@@ -66,9 +69,49 @@ async function parseSentence() {
   }
 }
 
+function openImageModal(src) {
+  modalImage.src = src;
+  imageModal.classList.add('active');
+}
+
+function closeImageModalFn() {
+  imageModal.classList.remove('active');
+  modalImage.src = '';
+}
+
+function setupImageClickHandlers() {
+  originalImageEl.addEventListener('click', () => {
+    if (originalImageEl.src) {
+      openImageModal(originalImageEl.src);
+    }
+  });
+
+  reducedImageEl.addEventListener('click', () => {
+    if (reducedImageEl.src) {
+      openImageModal(reducedImageEl.src);
+    }
+  });
+}
+
+closeModal.addEventListener('click', closeImageModalFn);
+
+imageModal.addEventListener('click', (event) => {
+  if (event.target === imageModal) {
+    closeImageModalFn();
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && imageModal.classList.contains('active')) {
+    closeImageModalFn();
+  }
+});
+
 parseBtn.addEventListener('click', parseSentence);
 sentenceInput.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     parseSentence();
   }
 });
+
+setupImageClickHandlers();

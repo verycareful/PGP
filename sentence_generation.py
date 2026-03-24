@@ -14,7 +14,7 @@ from discopy.grammar.pregroup import Ty, Word
 from flask import Flask, jsonify, render_template, request
 
 
-VERSION = "1903.26-alpha"
+VERSION = "2403.26-alpha"
 
 
 # =========================
