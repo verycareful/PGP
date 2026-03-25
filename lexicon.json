@@ -1,10 +1,10 @@
 {
-  "det": ["a", "an", "the", "this", "that", "these", "those", "my", "your"],
-  "adj": ["smart", "happy", "good", "bad", "big", "small", "new", "old", "bright"],
-  "noun": ["alice", "bob", "students", "student", "teacher", "cat", "dog", "book", "city", "music", "pizza", "car", "child", "children", "park", "garden", "river", "mat"],
-  "vintr": ["run", "runs", "sit", "sits", "sat", "sleep", "sleeps", "swim", "swims", "laugh", "laughs", "dance", "dances", "arrive", "arrives"],
-  "vtr": ["love", "loves", "see", "sees", "like", "likes", "eat", "eats", "read", "reads", "watch", "watches", "build", "builds", "know", "knows"],
-  "adv": ["quickly", "slowly", "silently", "happily", "sadly", "carefully", "loudly"],
-  "prep": ["in", "on", "at", "with", "by", "to", "from", "under", "over", "near"],
-  "conj": ["and", "or"]
+  "det":   ["a", "an", "the", "this", "that", "these", "those", "my", "your", "his", "her", "its", "our", "their"],
+  "adj":   ["smart", "happy", "good", "bad", "big", "small", "new", "old", "bright", "fast", "slow", "tall", "short", "long", "young", "beautiful", "interesting", "tired", "hungry", "loud", "quiet", "warm", "cold", "dark", "light"],
+  "noun":  ["alice", "bob", "students", "student", "teacher", "cat", "dog", "book", "city", "music", "pizza", "car", "child", "children", "park", "garden", "river", "mat", "house", "school", "world", "man", "woman", "friend", "table", "chair", "door", "window", "bird", "fish", "tree", "road", "sky", "sun", "moon", "water", "food", "letter", "paper", "idea", "story"],
+  "vintr": ["run", "runs", "sit", "sits", "sat", "sleep", "sleeps", "swim", "swims", "laugh", "laughs", "dance", "dances", "arrive", "arrives", "walk", "walks", "stand", "stands", "wait", "waits", "fall", "falls", "fly", "flies", "sing", "sings", "cry", "cries", "stop", "stops"],
+  "vtr":   ["love", "loves", "see", "sees", "like", "likes", "eat", "eats", "read", "reads", "watch", "watches", "build", "builds", "know", "knows", "make", "makes", "give", "gives", "take", "takes", "find", "finds", "help", "helps", "teach", "teaches", "follow", "follows", "carry", "carries", "hold", "holds", "open", "opens", "close", "closes", "hear", "hears", "meet", "meets"],
+  "adv":   ["quickly", "slowly", "silently", "happily", "sadly", "carefully", "loudly", "softly", "gently", "boldly", "always", "never", "often", "rarely", "well", "badly", "hard", "clearly", "deeply", "freely"],
+  "prep":  ["in", "on", "at", "with", "by", "to", "from", "under", "over", "near", "beside", "behind", "between", "through", "about", "for", "of", "into", "onto", "along"],
+  "conj":  ["and", "or"]
 }

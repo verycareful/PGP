@@ -3,63 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sentence Lab</title>
+  <title>Sentence Lab — Pregroup Grammar Parser</title>
+  <meta name="description" content="Parse English sentences with pregroup grammar and visualize their syntactic structure as string diagrams." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-  <div class="background-glow"></div>
-  <main class="app-shell">
-    <section class="hero">
-      <p class="eyebrow">Pregroup Grammar Playground</p>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <main class="shell">
+
+    <!-- Hero -->
+    <header class="hero">
+      <p class="eyebrow">Pregroup Grammar</p>
       <h1>Sentence Lab</h1>
-      <p class="subtitle">Parse everyday sentences with support for adverbs, prepositional phrases, and compound clauses using and/or.</p>
-    </section>
+      <p class="subtitle">Parse everyday sentences and visualize their syntactic structure using pregroup grammar string diagrams.</p>
+    </header>
 
-    <section class="card input-card">
-      <label for="sentenceInput">Enter sentence</label>
+    <!-- Input -->
+    <section class="card input-card" aria-label="Sentence input">
+      <label for="sentenceInput" class="field-label">Enter a sentence</label>
       <div class="input-row">
-        <input id="sentenceInput" type="text" placeholder="the smart student quickly reads a book in park and bob runs" />
-        <button id="parseBtn" type="button">Parse</button>
+        <input
+          id="sentenceInput"
+          type="text"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="the smart student quickly reads a book in the park"
+          aria-label="Sentence to parse"
+        />
+        <button id="parseBtn" type="button" aria-label="Parse sentence">
+          <span class="btn-text">Parse</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
       </div>
-      <p class="hint">You can edit the lexicon in lexicon.json without touching Python code.</p>
+      <p class="hint">
+        Supports adverbs, prepositional phrases, and compound clauses with
+        <code>and</code> / <code>or</code>. Press <kbd>Enter</kbd> to parse.
+      </p>
     </section>
 
-    <section class="card output-card">
-      <h2>Result</h2>
-      <div id="status" class="status neutral">Waiting for input.</div>
-      <div class="result-grid">
-        <div>
-          <h3>Tokens</h3>
-          <pre id="tokens">[]</pre>
-        </div>
-        <div>
-          <h3>Normalized</h3>
-          <pre id="normalized">-</pre>
-        </div>
-        <div>
-          <h3>Original Diagram</h3>
-          <pre id="originalDiagram">-</pre>
-          <div class="diagram-box">
-            <img id="originalDiagramImage" alt="Original diagram visualization" />
+    <!-- Output -->
+    <section class="card output-card" aria-label="Parse results" aria-live="polite">
+      <div id="status" class="status status--idle" role="status">Waiting for input.</div>
+
+      <!-- Token chips -->
+      <div id="tokenSection" class="token-section" hidden>
+        <h2 class="section-label">Tokens</h2>
+        <div id="tokenChips" class="token-chips" aria-label="Token part-of-speech tags"></div>
+        <p id="guessedNote" class="guessed-note" hidden>
+          <span class="guessed-badge" aria-hidden="true">?</span>
+          Words marked with <strong>?</strong> were inferred heuristically and may be incorrect.
+        </p>
+      </div>
+
+      <!-- Diagrams -->
+      <div id="diagramSection" class="diagram-section" hidden>
+        <div class="diagram-grid">
+
+          <div class="diagram-col">
+            <div class="diagram-header">
+              <h2 class="section-label">Original</h2>
+              <button class="copy-btn" data-target="originalDiagram" title="Copy diagram text" aria-label="Copy original diagram text">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+            <pre id="originalDiagram" class="diagram-text" aria-label="Original diagram notation">-</pre>
+            <div class="diagram-box" id="originalBox">
+              <div class="diagram-placeholder" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span>Diagram will appear here</span>
+              </div>
+              <img id="originalDiagramImage" alt="Original pregroup grammar diagram" class="diagram-img" />
+            </div>
           </div>
-        </div>
-        <div>
-          <h3>Reduced Diagram</h3>
-          <pre id="reducedDiagram">-</pre>
-          <div class="diagram-box">
-            <img id="reducedDiagramImage" alt="Reduced diagram visualization" />
+
+          <div class="diagram-col">
+            <div class="diagram-header">
+              <h2 class="section-label">Reduced <span class="badge">Normal Form</span></h2>
+              <button class="copy-btn" data-target="reducedDiagram" title="Copy diagram text" aria-label="Copy reduced diagram text">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+              </button>
+            </div>
+            <pre id="reducedDiagram" class="diagram-text" aria-label="Reduced diagram notation">-</pre>
+            <div class="diagram-box" id="reducedBox">
+              <div class="diagram-placeholder" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <span>Diagram will appear here</span>
+              </div>
+              <img id="reducedDiagramImage" alt="Reduced pregroup grammar diagram" class="diagram-img" />
+            </div>
           </div>
+
         </div>
       </div>
+
+      <!-- Empty state -->
+      <div id="emptyState" class="empty-state" aria-hidden="false">
+        <div class="empty-icon" aria-hidden="true">
+          <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4M12 16h.01"/>
+          </svg>
+        </div>
+        <p>Parse a sentence to see its pregroup grammar structure and diagrams.</p>
+      </div>
     </section>
+
+    <!-- History -->
+    <section id="historySection" class="card history-card" hidden aria-label="Parse history">
+      <div class="history-header">
+        <h2 class="section-label history-label">Recent Parses</h2>
+        <button id="clearHistory" class="ghost-btn" aria-label="Clear parse history">Clear</button>
+      </div>
+      <ul id="historyList" class="history-list" role="list"></ul>
+    </section>
+
   </main>
 
-  <div id="imageModal" class="image-modal">
-    <span class="close-modal">&times;</span>
-    <img id="modalImage" src="" alt="Expanded diagram" />
+  <!-- Enlarged diagram modal -->
+  <div id="imageModal" class="modal" role="dialog" aria-modal="true" aria-label="Enlarged diagram view">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close enlarged view">&times;</button>
+      <img id="modalImage" src="" alt="Enlarged pregroup grammar diagram" class="modal-img" />
+    </div>
   </div>
 
   <script src="/static/app.js"></script>

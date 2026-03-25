@@ -1,4 +1,4 @@
 lambeq==0.3.0
-discopy
-matplotlib
-Flask
+discopy>=0.3.0
+matplotlib>=3.5
+Flask>=2.3
